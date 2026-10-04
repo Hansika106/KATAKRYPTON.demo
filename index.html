@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katakrypton | SIH PS 21652 Live Account Profile & Threat Intelligence</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Three.js CDN for 3D Graphics -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Tesseract.js CDN for Client-Side OCR Engine -->
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #030712;
+            color: #f3f4f6;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            overflow-x: hidden;
+        }
+        #webgl-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .glass-card {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glow-text {
+            text-shadow: 0 0 25px rgba(59, 130, 246, 0.6);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(3, 7, 18, 0.8);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(59, 130, 246, 0.3);
+            border-radius: 3px;
+        }
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printable-report, #printable-report * {
+                visibility: visible;
+            }
+            #printable-report {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                color: #000;
+                background: #fff !important;
+            }
+        }
+    </style>
+</head>
+<body class="relative min-h-screen custom-scrollbar">
+
+    <!-- Original 3D Galaxy & Rainbow Spark WebGL Canvas -->
+    <div id="webgl-container"></div>
+
+    <!-- Navigation (Original Design) -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-card border-b border-gray-800/50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-500 to-purple-500 flex items-center justify-center font-bold text-white shadow-lg shadow-blue-500/50">
+                    K
+                </div>
+                <span class="text-xl font-extrabold tracking-wider bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-400 bg-clip-text text-transparent">KATAKRYPTON</span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-300">
+                <a href="#hero" class="hover:text-blue-400 transition-colors">Overview</a>
+                <a href="#search-section" class="hover:text-blue-400 transition-colors">Profile Search</a>
+                <a href="#network-section" class="hover:text-blue-400 transition-colors">Network Graph</a>
+                <a href="#analytics" class="hover:text-blue-400 transition-colors">Analytics Radar</a>
+                <a href="#demo" class="hover:text-blue-400 transition-colors">OCR Sandbox</a>
+            </div>
+            <div class="flex items-center space-x-3">
+                <button onclick="generateOfficialReport()" class="px-4 py-2.5 rounded-full bg-red-600 hover:bg-red-500 text-white text-xs font-semibold transition-all shadow-lg shadow-red-600/30 flex items-center space-x-1.5">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    <span>Official Incident PDF</span>
+                </button>
+                <a href="#search-section" class="px-5 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition-all shadow-lg shadow-blue-600/30">
+                    Analyze Profile
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content Wrapper -->
+    <main class="relative z-10 pt-24">
+
+        <!-- Hero Section (Original Design) -->
+        <section id="hero" class="min-h-[75vh] flex items-center justify-center px-6">
+            <div class="max-w-4xl mx-auto text-center space-y-8">
+                <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-card border border-blue-500/30 text-blue-400 text-xs font-semibold tracking-wide uppercase">
+                    <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+                    <span>Complete SIH PS 21652 Enterprise Solution</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-extrabold text-white tracking-tight leading-tight">
+                    Social Media Profile & <br/>
+                    <span class="bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-400 bg-clip-text text-transparent glow-text">Post Interaction Analytics</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto font-normal">
+                    Select target social platforms, enter handles, and run granular post-by-post sentiment analysis, comment interaction mapping, Hinglish threat lexicons, and live OCR screenshot scanning.
+                </p>
+                <div class="pt-2">
+                    <a href="#search-section" class="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold shadow-xl shadow-blue-600/25 transition-all inline-block">
+                        Search Social Profile
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Bar & Cross-Platform Identity Section -->
+        <section id="search-section" class="py-12 px-6 max-w-6xl mx-auto">
+            <div class="glass-card p-6 md:p-8 rounded-3xl border border-gray-800 shadow-2xl">
+                <h2 class="text-2xl font-bold text-white mb-2">Analyze Social Media Account</h2>
+                <p class="text-gray-400 text-xs mb-6">Search the saved demo accounts and review their posts and interactions.</p>
+                
+                <!-- Input Bar -->
+                <div class="flex flex-col md:flex-row items-center gap-4">
+                    <div class="w-full md:w-1/4">
+                        <label class="text-[10px] font-semibold uppercase text-gray-400 tracking-wider block mb-1">Target Platform</label>
+                        <select id="platform-select" onchange="updatePlatformSearchHint(true)" class="w-full bg-gray-900 border border-gray-700 text-xs text-gray-200 rounded-xl px-4 py-3.5 outline-none focus:border-blue-500">
+                            <option value="all">All</option>
+                            <option value="topics">Topics</option>
+                            <option value="twitter">X</option>
+                            <option value="instagram">Instagram</option>
+                            <option value="youtube">YouTube</option>
+                            <option value="telegram">Telegram Channel</option>
+                        </select>
+                    </div>
+
+                    <div class="w-full md:w-2/4">
+                        <label id="search-input-label" class="text-[10px] font-semibold uppercase text-gray-400 tracking-wider block mb-1">Account Handle / Username</label>
+                        <div class="relative">
+                            <span id="search-input-prefix" class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-500 text-xs">@</span>
+                            <input type="text" id="username-input" onfocus="showDemoSuggestions()" onkeydown="if(event.key==='Enter') fetchProfileAnalysis()" placeholder="e.g. sih_official or tech_insider" class="w-full bg-gray-900 border border-gray-700 text-xs text-gray-200 rounded-xl pl-9 pr-4 py-3.5 outline-none focus:border-blue-500">
+                        </div>
+                    </div>
+
+                    <div class="w-full md:w-1/4 pt-5">
+                        <button onclick="fetchProfileAnalysis()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold text-xs transition-all shadow-lg shadow-blue-600/30 flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <span id="fetch-button-label">Fetch & Analyze Profile</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="demo-search-results" class="mt-4 hidden">
+                    <p id="demo-search-message" class="hidden text-xs text-red-400 font-semibold mb-3">Not in Demo Dataset, Try one of the suggestions below</p>
+                    <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Try these</p>
+                    <div id="demo-suggestions" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                </div>
+
+                <!-- Cross-Platform Link Matrix -->
+                <div class="mt-6 pt-4 border-t border-gray-800/80">
+                    <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Cross-Platform Identity Matrix Linkage</p>
+                    <div id="cross-platform-matrix" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+                        <!-- JS populated -->
+                    </div>
+                </div>
+
+                <!-- Profile Header & Breakdown Container -->
+                <div id="profile-container" class="mt-8 hidden border-t border-gray-800/80 pt-6">
+                    <div class="flex flex-col md:flex-row items-center justify-between p-5 bg-gray-900/60 rounded-2xl border border-gray-800 gap-4 mb-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-14 h-14 rounded-full bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-blue-400 font-bold text-xl" id="profile-avatar">
+                                @
+                            </div>
+                            <div>
+                                <div class="flex items-center space-x-2">
+                                    <h3 class="text-lg font-bold text-white" id="profile-handle">@username</h3>
+                                    <span id="profile-badge" class="px-2 py-0.5 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800 text-[10px] font-semibold">VERIFIED ACCOUNT</span>
+                                </div>
+                                <p class="text-xs text-gray-400 mt-0.5" id="profile-platform-tag">Platform: X / Twitter</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-6 text-center text-xs">
+                            <div>
+                                <p class="text-gray-500 text-[10px]">Total Followers</p>
+                                <p class="text-white font-bold font-mono text-sm" id="profile-followers">48.2K</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-[10px]">Avg Post Sentiment</p>
+                                <p class="text-emerald-400 font-bold font-mono text-sm" id="profile-sentiment">84% POSITIVE</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-[10px]">Bot Risk Score</p>
+                                <p class="text-yellow-400 font-bold font-mono text-sm" id="profile-botrisk">4.2% LOW</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-sm font-bold text-white mb-2 flex items-center space-x-2">
+                        <i class="fa-solid fa-list-check text-blue-400"></i>
+                        <span>Granular Post & Interaction Comment Analysis</span>
+                    </h3>
+                    <p class="text-xs text-cyan-300 mb-4">Saved demo posts and anonymized interactions. Select a post to view its analysis below.</p>
+                    <div id="posts-list" class="space-y-4">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Coordinated Network Propagation Graph Section -->
+        <section id="network-section" class="py-6 px-6 max-w-6xl mx-auto">
+            <div class="glass-card p-6 md:p-8 rounded-3xl border border-gray-800 shadow-2xl">
+                <div class="flex justify-between items-center mb-4">
+                    <div>
+                        <h2 class="text-xl font-bold text-white">Coordinated Network Propagation Graph</h2>
+                        <p class="text-gray-400 text-xs mt-0.5">Interactive node map showing account interaction clusters and bot networks.</p>
+                    </div>
+                    <span class="text-xs font-mono text-blue-400 bg-blue-950/60 border border-blue-800/60 px-3 py-1 rounded-full">Interactive Canvas</span>
+                </div>
+                <div class="relative bg-gray-950/80 rounded-2xl border border-gray-800 h-[280px] overflow-hidden">
+                    <canvas id="network-canvas" class="w-full h-full cursor-grab active:cursor-grabbing"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Analytics Radar Section (Original Design) -->
+        <section id="analytics" class="py-12 px-6 max-w-7xl mx-auto">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-white">Live Sentiment & Geospatial Threat Radar</h2>
+                <p class="text-gray-400 text-xs mt-1">Aggregated platform analytics synced with target account inspection.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+                <!-- Sentiment Breakdown -->
+                <div class="glass-card p-6 rounded-2xl border border-gray-800">
+                    <h3 class="text-base font-bold text-white mb-4">Sentiment</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1">
+                                <span class="text-emerald-400">Positive</span>
+                                <span id="pos-percent">—</span>
+                            </div>
+                            <div class="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+                                <div id="pos-bar" class="bg-emerald-500 h-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1">
+                                <span class="text-yellow-400">Neutral</span>
+                                <span id="neu-percent">—</span>
+                            </div>
+                            <div class="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+                                <div id="neu-bar" class="bg-yellow-500 h-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1">
+                                <span class="text-red-400">Negative</span>
+                                <span id="neg-percent">—</span>
+                            </div>
+                            <div class="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+                                <div id="neg-bar" class="bg-red-500 h-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="pt-3 border-t border-gray-800 flex justify-between text-xs font-semibold">
+                            <span class="text-cyan-300">Sarcasm</span>
+                            <span id="sarcasm-percent" class="text-gray-200">—</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bot & Credibility Risk Gauge -->
+                <div class="glass-card p-6 rounded-2xl border border-gray-800">
+                    <h3 class="text-base font-bold text-white mb-4">Account Credibility Matrix</h3>
+                    <div class="space-y-3 text-xs">
+                        <div class="p-3 bg-gray-900/60 rounded-xl border border-gray-800 flex justify-between items-center">
+                            <div>
+                                <p class="font-bold text-white">Active Profile Inspected</p>
+                                <p class="text-gray-500 text-[10px]">Interaction Engine</p>
+                            </div>
+                            <span id="active-profile-tag" class="px-2 py-1 rounded bg-blue-950 text-blue-400 border border-blue-800 font-mono font-bold">—</span>
+                        </div>
+                        <div class="p-3 bg-gray-900/60 rounded-xl border border-gray-800 flex justify-between items-center">
+                            <div>
+                                <p class="font-bold text-white">Bot Activity Probability</p>
+                                <p class="text-gray-500 text-[10px]">Pattern Repetition Engine</p>
+                            </div>
+                            <span id="bot-risk-tag" class="px-2 py-1 rounded bg-yellow-950 text-yellow-400 border border-yellow-800 font-mono font-bold">—</span>
+                        </div>
+                        <div class="p-3 bg-gray-900/60 rounded-xl border border-gray-800 flex justify-between items-center">
+                            <div>
+                                <p class="font-bold text-white">Hinglish/Hindi Detection:</p>
+                                <p class="text-gray-500 text-[10px]">Multi-lingual Lexicon Engine</p>
+                            </div>
+                            <span id="hinglish-status-tag" class="px-2 py-1 rounded bg-emerald-950 text-emerald-400 border border-emerald-800 font-mono font-bold">—</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Demographics (same card styling) -->
+                <div class="glass-card p-6 rounded-2xl border border-gray-800">
+                    <h3 id="demographics-title" class="text-base font-bold text-white mb-4">Demographics</h3>
+                    <div id="demographics-content" class="space-y-2 text-xs text-gray-300">
+                        <p class="p-3 bg-gray-900/60 rounded-xl border border-gray-800">Select a saved post to view its demo demographics.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Sandbox (Browser OCR & Direct File Uploads) - Original Design with OCR Preview -->
+        <section id="demo" class="py-16 px-6 max-w-6xl mx-auto">
+            <div class="glass-card p-8 md:p-12 rounded-3xl border border-gray-800 shadow-2xl">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+                    <div>
+                        <h2 class="text-2xl font-bold text-white">Live OCR Screenshot Scanner & File Sandbox</h2>
+                        <p class="text-gray-400 text-sm mt-1">Upload chat screenshots (WhatsApp/Telegram) with bounding analytics or JSON export files.</p>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <select id="mode-select" class="bg-gray-900 border border-gray-700 text-xs text-gray-200 rounded-xl px-4 py-3 outline-none focus:border-blue-500">
+                            <option value="ocr">Mode: Live Chat Screenshot OCR</option>
+                            <option value="datafile">Mode: Account Export File (JSON/CSV)</option>
+                        </select>
+                        <button id="process-btn" onclick="runAnalysis()" class="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm transition-all flex items-center space-x-2 shadow-lg shadow-blue-600/30">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span>Scan File</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Left: Upload & Preview View -->
+                    <div class="flex flex-col h-full space-y-4">
+                        <label class="text-xs font-semibold uppercase text-gray-400 tracking-wider">Input Image or File</label>
+                        <div id="drop-zone" onclick="document.getElementById('file-input').click()" class="flex-1 border-2 border-dashed border-gray-700 hover:border-blue-500/50 rounded-2xl p-6 flex flex-col items-center justify-center text-center bg-gray-900/40 transition-all cursor-pointer min-h-[220px] relative overflow-hidden">
+                            <img id="ocr-preview-img" src="" alt="Preview" class="absolute inset-0 w-full h-full object-contain bg-gray-950/90 hidden p-2">
+                            <i class="fa-solid fa-file-arrow-up text-4xl text-gray-500 mb-3" id="upload-icon"></i>
+                            <p class="text-gray-300 font-medium text-sm" id="upload-text">Click to Select Chat Screenshot or JSON Data</p>
+                            <p class="text-gray-500 text-xs mt-1">Supports PNG, JPG, JSON, CSV (Processed Live)</p>
+                            <input type="file" id="file-input" accept=".json,.csv,image/*" class="hidden" onchange="handleFileSelect(event)">
+                        </div>
+                    </div>
+
+                    <!-- Right: Payload View -->
+                    <div class="flex flex-col h-full space-y-4">
+                        <div class="flex justify-between items-center">
+                            <label class="text-xs font-semibold uppercase text-gray-400 tracking-wider">Extracted OCR / Analysis Payload</label>
+                            <div class="flex space-x-2">
+                                <button onclick="triggerAlert()" class="px-3 py-1 rounded bg-red-950 hover:bg-red-900 text-xs text-red-300 border border-red-800 transition-all">
+                                    <i class="fa-solid fa-triangle-exclamation mr-1"></i> Escalate
+                                </button>
+                                <button onclick="copyPayload()" class="px-3 py-1 rounded bg-gray-800 hover:bg-gray-700 text-xs text-gray-300 border border-gray-700 transition-all">
+                                    <i class="fa-solid fa-copy mr-1"></i> Copy
+                                </button>
+                                <button onclick="downloadPayload()" class="px-3 py-1 rounded bg-blue-950 hover:bg-blue-900 text-xs text-blue-300 border border-blue-800 transition-all">
+                                    <i class="fa-solid fa-download mr-1"></i> JSON
+                                </button>
+                            </div>
+                        </div>
+                        <div class="flex-1 glass-card bg-gray-950/80 rounded-2xl p-6 font-mono text-xs text-blue-300 min-h-[240px] max-h-[360px] overflow-y-auto border border-gray-800 flex items-center justify-center" id="output-box">
+                            <span class="text-gray-500 font-sans">Upload an image or JSON file to scan...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 border-t border-gray-900 text-center text-xs text-gray-500">
+            <p>© 2026 Katakrypton AI Engine. Complete Smart India Hackathon PS 21652 Solution.</p>
+        </footer>
+
+    </main>
+
+    <!-- Hidden Printable Report for Official Law Enforcement PDF Output -->
+    <div id="printable-report" class="hidden p-8 font-sans">
+        <div class="border-b-2 border-black pb-4 mb-6 flex justify-between items-center">
+            <div>
+                <h1 class="text-3xl font-bold uppercase tracking-wider">OFFICIAL OSINT INCIDENT REPORT</h1>
+                <p class="text-sm text-gray-600">KATAKRYPTON Intelligence Engine | SIH PS 21652</p>
+            </div>
+            <div class="text-right text-xs font-mono">
+                <p>CONFIDENTIAL / LAW ENFORCEMENT</p>
+                <p>TIMESTAMP: <span id="report-timestamp"></span></p>
+            </div>
+        </div>
+
+        <div class="space-y-6">
+            <div class="border p-4 rounded bg-gray-50">
+                <h2 class="font-bold text-lg mb-2">TARGET SUMMARY & IDENTIFICATION</h2>
+                <p><strong>Primary Target Handle:</strong> <span id="report-handle">@sih_official</span></p>
+                <p><strong>Platform:</strong> <span id="report-platform">X / Twitter</span></p>
+                <p><strong>Coordinated Bot Risk Score:</strong> <span id="report-botrisk">4.2%</span></p>
+            </div>
+
+            <div class="border p-4 rounded">
+                <h2 class="font-bold text-lg mb-2">EXTRACTED THREAT & HINGLISH FLAGS</h2>
+                <ul id="report-flags-list" class="list-disc pl-5 text-sm space-y-1">
+                    <li>Analysis complete. Hinglish + Multilingual lexicon monitoring active.</li>
+                </ul>
+            </div>
+
+            <div class="mt-8 text-xs border-t pt-4 text-center text-gray-500">
+                This document contains algorithmic threat analysis generated for Smart India Hackathon OSINT workflows.
+            </div>
+        </div>
+    </div>
+
+    <!-- Demo notice modal -->
+    <div id="demo-notice" class="fixed inset-0 z-[100] flex items-center justify-center bg-gray-950/80 backdrop-blur-sm px-6">
+        <div class="glass-card w-full max-w-md rounded-2xl border border-blue-500/40 p-7 text-center shadow-2xl shadow-blue-950/40">
+            <h2 class="text-2xl font-bold text-white mb-2">Heads Up!</h2>
+            <p class="text-sm text-gray-300 mb-6">Keep in mind that this is just a Demo</p>
+            <button onclick="closeDemoNotice()" class="px-7 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-sm font-semibold transition-all shadow-lg shadow-blue-600/25">OK</button>
+        </div>
+    </div>
+
+    <!-- Engine Script (Original 3D Engine + Integrated 5 Modifications) -->
+    <script>
+        let scene, camera, renderer, galaxyParticles, starField, coreMesh, rainbowSparkLine;
+        let uploadedFile = null;
+        let lastOutputData = null;
+        let selectedDemoAccount = null;
+        let selectedDemoPost = null;
+
+        // Saved frontend-only demo data. Add accounts and posts here as supplied.
+        const DEMO_ACCOUNTS = [
+            {
+                platform: 'X',
+                handle: '@PIB_India',
+                followers: '3.1M',
+                averageSentiment: 67,
+                botRisk: '0% LOW',
+                hinglishDetection: 'None',
+                posts: [
+                    {
+                        id: 'pib-india-post-1',
+                        summary: 'Ministry of Education approves five Centres of Excellence for classical languages, to support research and digitisation.',
+                        sentiment: { positive: 0, neutral: 100, negative: 0 },
+                        sarcasm: 0,
+                        comments: [
+                            { user: 'User_01', text: 'Is it good to open Centre of Excellence of Prakrit in Gujarat University??' }
+                        ],
+                        demographics: 'Very few comments to calculate'
+                    },
+                    {
+                        id: 'pib-india-post-2',
+                        summary: "India's first 5.56 km free-space quantum key distribution link is demonstrated by QNu Labs, BISAG-N and IIT Gandhinagar.",
+                        sentiment: { positive: 100, neutral: 0, negative: 0 },
+                        sarcasm: 0,
+                        comments: [
+                            { user: 'User_01', text: 'Congratulations! What was it demonstrated by the Space Applications Centre ISRO few years back in free space quantum communication? Which way is this different!' },
+                            { user: 'User_02', text: 'This is a solid step. Free-space quantum key distribution is much harder than fiber… the key rate of 230–260 bits per second is modest, but that is typical at this stage.' }
+                        ],
+                        demographics: 'Very few comments to calculate'
+                    }
+                ]
+            },
+            {
+                platform: 'X',
+                handle: '@PMOIndia',
+                followers: '58.4M',
+                averageSentiment: 100,
+                averageSentimentLabel: '100% POSITIVE',
+                botRisk: '10% LOW',
+                hinglishDetection: 'Hindi: 20%',
+                posts: [
+                    {
+                        id: 'pmo-india-post-1',
+                        summary: "PM congratulates Lovlina Borgohain on winning Gold in the Women's 75 kg boxing final at the Asian Games with a 5-0 win.",
+                        sentiment: { positive: 100, neutral: 0, negative: 0 },
+                        sarcasm: null,
+                        comments: [
+                            { user: 'User_01', text: 'Hearty congratulations! Really a great moment! All 140 crore will feel great.' },
+                            { user: 'User_02', text: 'एशियन गेम्स २०२६ महिला मुक्केबाजी ७५ कि.ग्राम में सुवर्ण पदक जीतने वाली जी को हार्दिक बधाई एवं अभिनंदन। भारत माता की जय, वंदे मातरम् (Heartfelt congratulations to the gold medallist in women’s 75 kg boxing at the Asian Games 2026.)' },
+                            { user: 'User_03', text: 'Proud to be a son of Assam. We need more and more like this.' }
+                        ],
+                        demographics: {
+                            regions: [
+                                { label: 'North India', share: 34 },
+                                { label: 'West India', share: 22 },
+                                { label: 'South India', share: 16 },
+                                { label: 'East India', share: 14 },
+                                { label: 'North-East India', share: 14 }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                platform: 'X',
+                handle: '@DelhiPolice',
+                followers: '1M',
+                averageSentiment: 5,
+                averageSentimentLabel: '5% POSITIVE',
+                botRisk: '0% LOW',
+                hinglishDetection: '9%',
+                posts: [
+                    {
+                        id: 'delhi-police-post-1',
+                        summary: 'Delhi Police fact-check says a circulating CCTV image is AI-generated and fake, and warns that sharing such posts may attract legal action.',
+                        sentiment: { positive: 0, neutral: 9, negative: 91 },
+                        sarcasm: null,
+                        hinglishDetection: '9%',
+                        demographicsIllustrative: true,
+                        comments: [
+                            { user: 'User_01', text: 'Sir, where is our cyber crime department. Find out who started and spread this' },
+                            { user: 'User_02', text: 'Take action on the handles amplifying this fake AI video.' },
+                            { user: 'User_03', text: 'What is the problem in filing a First Information Report? At least this much we can expect from Delhi Police.' }
+                        ],
+                        demographics: {
+                            regions: [
+                                { label: 'Delhi NCR', share: 30 },
+                                { label: 'North India', share: 24 },
+                                { label: 'West India', share: 16 },
+                                { label: 'South India', share: 14 },
+                                { label: 'East and North-East', share: 16 }
+                            ],
+                            interests: [
+                                { label: 'Law and public affairs', share: 30 },
+                                { label: 'Technology and cyber', share: 25 },
+                                { label: 'Students', share: 20 },
+                                { label: 'Other', share: 25 }
+                            ]
+                        }
+                    },
+                    {
+                        id: 'delhi-police-post-2',
+                        summary: 'A fact-check says a viral "gazette" declaring every Saturday a bank holiday for public sector banks is fake, and that no such notification was issued by the Finance Ministry.',
+                        sentiment: { positive: 10, neutral: 30, negative: 60 },
+                        sarcasm: null,
+                        hinglishDetection: 'Hinglish: 10% · Hindi: 20%',
+                        demographicsIllustrative: true,
+                        comments: [
+                            { user: 'User_01', text: 'Then we want fixed timings for employees and officers. Then you can easily reject 5-day banking.' },
+                            { user: 'User_02', text: 'तुम्हें शर्म आनी चाहिए ये कहते कि ये नोटिफिकेशन फेक है। (English: You should be ashamed to say this notification is fake.)' },
+                            { user: 'User_03', text: 'Should trace the account that posted it first and take strict action against it.' }
+                        ],
+                        demographics: {
+                            regions: [
+                                { label: 'North India', share: 32 },
+                                { label: 'West India', share: 20 },
+                                { label: 'South India', share: 18 },
+                                { label: 'East India', share: 16 },
+                                { label: 'Central India', share: 14 }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                type: 'topic',
+                platform: 'Topic',
+                handle: 'Fake notices and AI-generated misinformation',
+                followers: '2 posts',
+                averageSentimentLabel: 'TOPIC ANALYSIS',
+                botRisk: '0% LOW',
+                hinglishDetection: '—',
+                posts: [
+                    {
+                        id: 'fake-misinformation-post-1',
+                        summary: 'A fact-check shows that viral videos about a hijacking attempt on a Dubai-Tel Aviv flight were fake. One was an AI-generated deepfake posing as a BBC report, and another was filmed elsewhere.',
+                        sentiment: { positive: 0, neutral: 60, negative: 40 },
+                        sarcasm: null,
+                        hinglishDetection: 'None',
+                        demographics: {
+                            regions: [
+                                { label: 'North India (including Delhi NCR)', share: 36 },
+                                { label: 'West India', share: 20 },
+                                { label: 'South India', share: 18 },
+                                { label: 'East India', share: 14 },
+                                { label: 'International / unclear', share: 12 }
+                            ]
+                        },
+                        comments: [
+                            { user: 'User_01', text: 'They should be legally required to say when something is AI.' },
+                            { user: 'User_02', text: 'Miss the days when images could be accused of being Photoshopped.' },
+                            { user: 'User_03', text: 'I would invest in a company that builds a program to disable AI videos.' }
+                        ]
+                    },
+                    {
+                        id: 'fake-misinformation-post-2',
+                        summary: 'Delhi Police says a circulating CCTV image is AI-generated and fake, and warns that sharing it may attract legal action.',
+                        sentiment: { positive: 13, neutral: 13, negative: 74 },
+                        sarcasm: 25,
+                        hinglishDetection: 'Hinglish: 50% · Hindi: 25% · English: 25%',
+                        demographics: {
+                            regions: [
+                                { label: 'North India (including Delhi NCR)', share: 36 },
+                                { label: 'West India', share: 20 },
+                                { label: 'South India', share: 18 },
+                                { label: 'East India', share: 14 },
+                                { label: 'International / unclear', share: 12 }
+                            ]
+                        },
+                        comments: [
+                            { user: 'User_01', text: 'Arre wo theek hai, jisne galat post daali uske khilaaf action lo, but kya police sach mein honestly work karti hai? (English: Fine, act against whoever made the false post, but does the police really work honestly?)' },
+                            { user: 'User_02', text: 'भगवान महादेव जी का आशीर्वाद समस्त दिल्ली पुलिस पर और उनके परिवारों पर सदैव बना रहे। (English: May God’s blessings always be with Delhi Police and their families.)' },
+                            { user: 'User_03', text: 'Why isn’t the Delhi Police using water cannons and tear gas? ... It is a mistake to deal so leniently with those attempting to incite a riot.' }
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        // Expanded Hinglish + Multilingual Threat Lexicon
+        const positiveKeywords = ['great', 'excellent', 'love', 'amazing', 'good', 'awesome', 'best', 'supported', 'slick', 'win', 'innovative', 'looking forward', 'helpful', 'top', 'verified', 'sahi', 'badhiya', 'accha'];
+        const negativeKeywords = ['bad', 'fake', 'bot', 'scam', 'threat', 'suspicious', 'hack', 'attack', 'bug', 'fail', 'terrible', 'warning', 'flagged', 'illegal', 'harass', 'violence', 'dhokha', 'farzi', 'danga', 'bhadkao', 'chori', 'feku', 'rumor', 'riot'];
+
+        function calculateSentiment(text) {
+            const words = text.toLowerCase().match(/\b\w+\b/g) || [];
+            let posCount = 0;
+            let negCount = 0;
+            const matches = [];
+
+            words.forEach(w => {
+                if (positiveKeywords.includes(w)) { posCount++; matches.push(w); }
+                if (negativeKeywords.includes(w)) { negCount++; matches.push(w); }
+            });
+
+            const total = posCount + negCount;
+            let compoundScore = 0;
+            let label = "NEUTRAL";
+            
+            if (total > 0) {
+                compoundScore = (posCount - negCount) / Math.sqrt(total);
+            }
+
+            if (compoundScore > 0.15) label = "POSITIVE";
+            else if (compoundScore < -0.15) label = "THREAT FLAG";
+
+            const confidence = total > 0 ? Math.min(Math.round((Math.abs(posCount - negCount) / total) * 100 + 40), 98) : 65;
+
+            return {
+                label,
+                compoundScore: compoundScore.toFixed(2),
+                confidence: `${confidence}%`,
+                matchedKeywords: matches
+            };
+        }
+
+        function calculateBotRisk(username) {
+            let risk = 2.0;
+            if (/\d{4,}$/.test(username)) risk += 35;
+            if (username.length > 15) risk += 15;
+            if (/(bot|scam|crypto|airdrop|free|farzi)/i.test(username)) risk += 40;
+            return Math.min(risk + Math.random() * 5, 99.5).toFixed(1);
+        }
+
+        function renderCrossPlatformMatrix(username) {
+            const cleanHandle = username.replace('@', '');
+            const platforms = [
+                { name: 'Twitter / X', handle: `@${cleanHandle}`, threat: 'LOW' },
+                { name: 'Telegram', handle: `t.me/${cleanHandle}`, threat: 'MEDIUM' },
+                { name: 'Reddit', handle: `u/${cleanHandle}`, threat: 'LOW' },
+                { name: 'YouTube', handle: `@${cleanHandle}_official`, threat: 'LOW' }
+            ];
+
+            const container = document.getElementById('cross-platform-matrix');
+            container.innerHTML = '';
+            platforms.forEach(p => {
+                container.innerHTML += `
+                    <div class="bg-gray-900/60 p-2.5 rounded-xl border border-gray-800 text-xs">
+                        <p class="text-gray-500 text-[10px] uppercase font-bold">${p.name}</p>
+                        <p class="text-white font-mono font-semibold truncate">${p.handle}</p>
+                        <span class="inline-block mt-1 text-[9px] font-bold font-mono px-1.5 py-0.5 rounded bg-blue-950 text-blue-400 border border-blue-800">${p.threat} RISK</span>
+                    </div>
+                `;
+            });
+        }
+
+        function initNetworkGraph() {
+            const canvas = document.getElementById('network-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = canvas.parentElement.clientWidth;
+            canvas.height = canvas.parentElement.clientHeight;
+
+            const nodes = [
+                { id: 'Target Profile', x: canvas.width * 0.5, y: canvas.height * 0.5, radius: 14, color: '#3b82f6' },
+                { id: '@bot_node_1', x: canvas.width * 0.25, y: canvas.height * 0.3, radius: 9, color: '#ef4444' },
+                { id: '@bot_node_2', x: canvas.width * 0.75, y: canvas.height * 0.25, radius: 9, color: '#ef4444' },
+                { id: 'Telegram Relay', x: canvas.width * 0.3, y: canvas.height * 0.75, radius: 11, color: '#eab308' },
+                { id: 'Commenter Cluster', x: canvas.width * 0.7, y: canvas.height * 0.7, radius: 11, color: '#10b981' }
+            ];
+
+            const links = [
+                { source: 0, target: 1 },
+                { source: 0, target: 2 },
+                { source: 0, target: 3 },
+                { source: 0, target: 4 },
+                { source: 1, target: 3 }
+            ];
+
+            function animateGraph() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                links.forEach(link => {
+                    const s = nodes[link.source];
+                    const t = nodes[link.target];
+                    ctx.strokeStyle = 'rgba(59, 130, 246, 0.3)';
+                    ctx.lineWidth = 1.5;
+                    ctx.beginPath();
+                    ctx.moveTo(s.x, s.y);
+                    ctx.lineTo(t.x, t.y);
+                    ctx.stroke();
+                });
+
+                nodes.forEach(node => {
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = node.color;
+                    ctx.shadowColor = node.color;
+                    ctx.shadowBlur = 10;
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+
+                    ctx.fillStyle = '#ffffff';
+                    ctx.font = '10px system-ui';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(node.id, node.x, node.y + node.radius + 12);
+                });
+
+                requestAnimationFrame(animateGraph);
+            }
+            animateGraph();
+        }
+
+        // Original Three.js 3D Background Engine
+        function init3D() {
+            const container = document.getElementById('webgl-container');
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 8;
+
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            container.appendChild(renderer.domElement);
+
+            const coreGeo = new THREE.IcosahedronGeometry(2.0, 2);
+            const coreMat = new THREE.MeshBasicMaterial({ color: 0x3b82f6, wireframe: true, transparent: true, opacity: 0.22 });
+            coreMesh = new THREE.Mesh(coreGeo, coreMat);
+            scene.add(coreMesh);
+
+            const galaxyCount = 1200;
+            const galaxyGeo = new THREE.BufferGeometry();
+            const galaxyPositions = new Float32Array(galaxyCount * 3);
+
+            for (let i = 0; i < galaxyCount; i++) {
+                const radius = Math.random() * 9 + 1;
+                const spinAngle = radius * 0.8;
+                const branchAngle = ((i % 3) * 2 * Math.PI) / 3;
+
+                galaxyPositions[i * 3] = Math.cos(branchAngle + spinAngle) * radius + (Math.random() - 0.5) * 1.5;
+                galaxyPositions[i * 3 + 1] = (Math.random() - 0.5) * 1.5;
+                galaxyPositions[i * 3 + 2] = Math.sin(branchAngle + spinAngle) * radius + (Math.random() - 0.5) * 1.5;
+            }
+
+            galaxyGeo.setAttribute('position', new THREE.BufferAttribute(galaxyPositions, 3));
+            galaxyParticles = new THREE.Points(galaxyGeo, new THREE.PointsMaterial({ color: 0x60a5fa, size: 0.04, transparent: true, opacity: 0.65 }));
+            scene.add(galaxyParticles);
+
+            const starCount = 1500;
+            const starGeo = new THREE.BufferGeometry();
+            const starPositions = new Float32Array(starCount * 3);
+            for (let i = 0; i < starCount * 3; i++) starPositions[i] = (Math.random() - 0.5) * 35;
+            starGeo.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
+            starField = new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0xffffff, size: 0.02, transparent: true, opacity: 0.8 }));
+            scene.add(starField);
+
+            const sparkPoints = [];
+            const sparkColors = [];
+            const count = 120;
+
+            for (let i = 0; i <= count; i++) {
+                const t = (i / count) * Math.PI * 2;
+                sparkPoints.push(new THREE.Vector3(Math.cos(t) * 6, Math.sin(t * 2) * 2.5, Math.sin(t) * 6));
+                const color = new THREE.Color();
+                color.setHSL(i / count, 1.0, 0.6);
+                sparkColors.push(color.r, color.g, color.b);
+            }
+
+            const sparkGeo = new THREE.BufferGeometry().setFromPoints(sparkPoints);
+            sparkGeo.setAttribute('color', new THREE.Float32BufferAttribute(sparkColors, 3));
+            rainbowSparkLine = new THREE.Line(sparkGeo, new THREE.LineBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.85 }));
+            scene.add(rainbowSparkLine);
+
+            window.addEventListener('resize', onWindowResize);
+            animate();
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            if (coreMesh) { coreMesh.rotation.x += 0.0012; coreMesh.rotation.y += 0.0020; }
+            if (galaxyParticles) galaxyParticles.rotation.y -= 0.0008;
+            if (starField) starField.rotation.y += 0.0002;
+            if (rainbowSparkLine) { rainbowSparkLine.rotation.y += 0.006; rainbowSparkLine.rotation.x += 0.003; }
+            renderer.render(scene, camera);
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        function escapeHtml(value) {
+            return String(value ?? '').replace(/[&<>"']/g, character => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            })[character]);
+        }
+
+        function updatePlatformSearchHint(refreshResults = false) {
+            const platform = document.getElementById('platform-select').value;
+            const isTelegram = platform === 'telegram';
+            const isTopic = platform === 'topics';
+            const isAll = platform === 'all';
+            document.getElementById('search-input-label').innerText = isTelegram
+                ? 'Telegram Channel Name or @Username'
+                : isTopic ? 'Topic Name' : isAll ? 'Account or Topic' : 'Account Handle / Username';
+            document.getElementById('username-input').placeholder = isTelegram
+                ? 'e.g. KATAKRYPTON or @my_channel'
+                : isTopic ? 'e.g. Fake notices and AI-generated misinformation'
+                : isAll ? 'Search an account or demo topic'
+                : 'e.g. sih_official or tech_insider';
+            document.getElementById('search-input-prefix').classList.toggle('hidden', isTelegram || isTopic || isAll);
+            document.getElementById('fetch-button-label').innerText = 'Search Demo Dataset';
+            if (refreshResults) {
+                document.getElementById('profile-container').classList.add('hidden');
+                selectedDemoAccount = null;
+                selectedDemoPost = null;
+                showDemoSuggestions(false);
+            } else if (!document.getElementById('demo-search-results').classList.contains('hidden')) {
+                showDemoSuggestions(false);
+            }
+        }
+
+        const normalizeDemoSearch = value => String(value ?? '').trim().replace(/^@/, '').replace(/\s+/g, ' ').toLowerCase();
+
+        function getPlatformDemoItems() {
+            const platform = document.getElementById('platform-select').value;
+            if (platform === 'all') return DEMO_ACCOUNTS;
+            if (platform === 'topics') return DEMO_ACCOUNTS.filter(item => item.type === 'topic');
+            if (platform === 'twitter') return DEMO_ACCOUNTS.filter(item => item.type !== 'topic' && item.platform === 'X');
+            return [];
+        }
+
+        function showDemoSuggestions(showMessage = false) {
+            const results = document.getElementById('demo-search-results');
+            const message = document.getElementById('demo-search-message');
+            results.classList.remove('hidden');
+            renderDemoSuggestions();
+            const noPlatformData = getPlatformDemoItems().length === 0;
+            message.innerText = noPlatformData
+                ? 'No dataset for this platform yet.'
+                : 'Not in Demo Dataset, Try one of the suggestions below';
+            message.classList.toggle('hidden', !noPlatformData && !showMessage);
+        }
+
+        function renderDemoSuggestions() {
+            const suggestions = document.getElementById('demo-suggestions');
+            suggestions.innerHTML = '';
+            getPlatformDemoItems().forEach(account => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'w-full text-left p-3 rounded-xl bg-gray-900/60 border border-gray-800 hover:border-blue-500/70 transition-all';
+                const suggestionTitle = account.type === 'topic' ? `Topic: ${account.handle}` : account.handle;
+                const suggestionDetail = account.type === 'topic' ? `${account.posts.length} demo posts` : `${account.followers} followers`;
+                button.innerHTML = `
+                    <span class="flex items-center justify-between gap-3">
+                        <span>
+                            <span class="block text-sm font-semibold text-white">${escapeHtml(suggestionTitle)}</span>
+                            <span class="block text-[10px] text-gray-400 mt-1">${escapeHtml(suggestionDetail)}</span>
+                        </span>
+                        <span class="shrink-0 px-2 py-1 rounded-md border border-blue-800 bg-blue-950/70 text-blue-300 text-[10px] font-bold">${account.type === 'topic' ? 'TOPIC' : escapeHtml(account.platform)}</span>
+                    </span>`;
+                button.addEventListener('click', () => {
+                    document.getElementById('username-input').value = account.handle;
+                    document.getElementById('platform-select').value = account.type === 'topic' ? 'topics' : account.platform.toLowerCase() === 'x' ? 'twitter' : account.platform.toLowerCase();
+                    updatePlatformSearchHint();
+                    document.getElementById('demo-search-results').classList.add('hidden');
+                    openDemoAccount(account);
+                });
+                suggestions.appendChild(button);
+            });
+        }
+
+        function fetchProfileAnalysis() {
+            const rawQuery = document.getElementById('username-input').value.trim();
+            if (!rawQuery) {
+                showDemoSuggestions(false);
+                return;
+            }
+
+            const matchingItems = getPlatformDemoItems();
+            if (!matchingItems.length) {
+                document.getElementById('profile-container').classList.add('hidden');
+                showDemoSuggestions(false);
+                return;
+            }
+
+            const query = normalizeDemoSearch(rawQuery);
+            const account = matchingItems.find(item => normalizeDemoSearch(item.handle) === query || (item.type === 'topic' && normalizeDemoSearch(`Topic: ${item.handle}`) === query));
+            if (account) {
+                document.getElementById('demo-search-results').classList.add('hidden');
+                openDemoAccount(account);
+                return;
+            }
+
+            for (const item of matchingItems) {
+                const matchedPost = item.posts.find(post => normalizeDemoSearch(post.summary) === query);
+                if (matchedPost) {
+                    document.getElementById('demo-search-results').classList.add('hidden');
+                    openDemoAccount(item, matchedPost.id);
+                    return;
+                }
+            }
+
+            document.getElementById('profile-container').classList.add('hidden');
+            showDemoSuggestions(true);
+        }
+
+        function openDemoAccount(account, selectedPostId = null) {
+            selectedDemoAccount = account;
+            selectedDemoPost = null;
+
+            const container = document.getElementById('profile-container');
+            const postsContainer = document.getElementById('posts-list');
+            container.classList.remove('hidden');
+            const isTopic = account.type === 'topic';
+            document.getElementById('profile-handle').innerText = isTopic ? `Topic: ${account.handle}` : account.handle;
+            document.getElementById('profile-avatar').innerText = isTopic ? 'T' : account.handle.replace(/^@/, '').charAt(0).toUpperCase();
+            document.getElementById('profile-badge').innerText = isTopic ? 'TOPIC DATASET' : 'DEMO DATASET';
+            document.getElementById('profile-platform-tag').innerText = isTopic ? 'Topic analysis · source platforms not specified' : `Platform: ${account.platform}`;
+            document.querySelector('#profile-followers').previousElementSibling.innerText = isTopic ? 'Saved Demo Posts' : 'Total Followers';
+            document.getElementById('profile-followers').innerText = account.followers;
+            document.querySelector('#profile-sentiment').previousElementSibling.innerText = isTopic ? 'Dataset' : 'Avg Post Sentiment';
+            document.getElementById('profile-sentiment').innerText = account.averageSentimentLabel || `${account.averageSentiment}%`;
+            document.querySelector('#profile-botrisk').previousElementSibling.innerText = isTopic ? 'Bot Activity' : 'Bot Risk Score';
+            document.getElementById('profile-botrisk').className = 'text-emerald-400 font-bold font-mono text-sm';
+            document.getElementById('profile-botrisk').innerText = account.botRisk;
+            document.getElementById('active-profile-tag').innerText = isTopic ? 'Topic dataset' : account.handle;
+            document.getElementById('bot-risk-tag').className = 'px-2 py-1 rounded bg-emerald-950 text-emerald-400 border border-emerald-800 font-mono font-bold';
+            document.getElementById('bot-risk-tag').innerText = account.botRisk;
+            document.getElementById('hinglish-status-tag').innerText = account.hinglishDetection;
+            document.getElementById('demographics-title').innerText = 'Demographics';
+
+            postsContainer.innerHTML = '';
+            account.posts.forEach(post => {
+                const postCard = document.createElement('article');
+                postCard.id = `demo-card-${post.id}`;
+                postCard.className = 'demo-post-card p-4 bg-gray-900/60 rounded-xl border border-gray-800 space-y-3 transition-all';
+                const comments = post.comments.map(comment => `
+                    <div class="flex items-start justify-between gap-3 p-2.5 rounded-lg bg-gray-950/60 border border-gray-800">
+                        <p class="text-[11px] text-gray-300"><span class="text-blue-400 font-semibold mr-1">${escapeHtml(comment.user)}:</span>${escapeHtml(comment.text)}</p>
+                    </div>`).join('');
+                postCard.innerHTML = `
+                    <button type="button" class="demo-post-select w-full text-left rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500" aria-label="Select this post for analysis">
+                        <div class="flex justify-between items-start gap-3">
+                            <div>
+                                <p class="text-xs text-white font-semibold leading-relaxed">${escapeHtml(post.summary)}</p>
+                                <p class="text-[10px] text-gray-500 mt-1">${escapeHtml(isTopic ? `Topic: ${account.handle}` : account.handle)}</p>
+                            </div>
+                            <span class="shrink-0 px-2 py-1 rounded-md border border-blue-800 bg-blue-950/70 text-blue-300 text-[10px] font-bold">${escapeHtml(isTopic ? 'Source not specified' : account.platform)}</span>
+                        </div>
+                    </button>
+                    <div class="pt-3 border-t border-gray-800/80 space-y-2">
+                        <p class="text-[10px] uppercase tracking-wider text-gray-400 font-bold">Top user interactions &amp; comments:</p>
+                        ${comments}
+                    </div>
+                    <p class="demo-selected-label hidden text-[10px] text-cyan-300 font-semibold">Selected for analysis below</p>`;
+                postCard.querySelector('.demo-post-select').addEventListener('click', () => selectDemoPost(post.id));
+                postsContainer.appendChild(postCard);
+            });
+
+            document.getElementById('pos-percent').innerText = '—';
+            document.getElementById('neu-percent').innerText = '—';
+            document.getElementById('neg-percent').innerText = '—';
+            document.getElementById('sarcasm-percent').innerText = '—';
+            ['pos', 'neu', 'neg'].forEach(prefix => { document.getElementById(`${prefix}-bar`).style.width = '0%'; });
+            document.getElementById('demographics-content').innerHTML = '<p class="p-3 bg-gray-900/60 rounded-xl border border-gray-800">Select a saved post to view its demo demographics.</p>';
+
+            if (selectedPostId) {
+                selectDemoPost(selectedPostId);
+            } else {
+                container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function selectDemoPost(postId) {
+            if (!selectedDemoAccount) return;
+            const post = selectedDemoAccount.posts.find(item => item.id === postId);
+            if (!post) return;
+            selectedDemoPost = post;
+
+            const values = [
+                ['pos', post.sentiment.positive],
+                ['neu', post.sentiment.neutral],
+                ['neg', post.sentiment.negative]
+            ];
+            values.forEach(([prefix, value]) => {
+                document.getElementById(`${prefix}-percent`).innerText = `${value}%`;
+                document.getElementById(`${prefix}-bar`).style.width = `${value}%`;
+            });
+            document.getElementById('sarcasm-percent').innerText = post.sarcasm == null ? '—' : `${post.sarcasm}%`;
+            document.getElementById('hinglish-status-tag').innerText = post.hinglishDetection || selectedDemoAccount.hinglishDetection;
+            document.getElementById('demographics-title').innerText = post.demographicsIllustrative
+                ? 'Demographics (Illustrative sample)'
+                : 'Demographics';
+            const demographicsContent = document.getElementById('demographics-content');
+            if (Array.isArray(post.demographics) || (post.demographics && typeof post.demographics === 'object')) {
+                const groups = Array.isArray(post.demographics)
+                    ? [{ title: 'Region', items: post.demographics }]
+                    : [
+                        { title: 'Region', items: post.demographics.regions || [] },
+                        { title: 'Interests', items: post.demographics.interests || [] }
+                    ].filter(group => group.items.length);
+                demographicsContent.innerHTML = groups.map(group => `
+                    <div class="space-y-2">
+                        <div class="flex justify-between px-1 text-[10px] uppercase tracking-wider text-gray-500 font-bold"><span>${escapeHtml(group.title)}</span><span>Share</span></div>
+                        ${group.items.map(item => `
+                            <div class="p-2.5 rounded bg-gray-900/60 border border-gray-800">
+                                <div class="flex justify-between items-center mb-1.5"><span class="font-semibold text-gray-300">${escapeHtml(item.label ?? item.region)}</span><span class="text-cyan-300 font-mono font-bold">${item.share}%</span></div>
+                                <div class="w-full h-1.5 bg-gray-800 rounded-full overflow-hidden"><div class="bg-cyan-500 h-full transition-all duration-500" style="width:${item.share}%"></div></div>
+                            </div>`).join('')}
+                    </div>`).join('');
+            } else {
+                demographicsContent.innerHTML = `<p class="p-3 bg-gray-900/60 rounded-xl border border-gray-800">${escapeHtml(post.demographics)}</p>`;
+            }
+
+            document.querySelectorAll('.demo-post-card').forEach(card => {
+                const isSelected = card.id === `demo-card-${postId}`;
+                card.classList.toggle('border-blue-500/80', isSelected);
+                card.classList.toggle('shadow-lg', isSelected);
+                card.querySelector('.demo-selected-label').classList.toggle('hidden', !isSelected);
+            });
+            document.getElementById('analytics').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function closeDemoNotice() {
+            document.getElementById('demo-notice').classList.add('hidden');
+        }
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (file) {
+                uploadedFile = file;
+                document.getElementById('upload-text').innerText = `Selected: ${file.name}`;
+                document.getElementById('upload-icon').className = "fa-solid fa-file-circle-check text-4xl text-green-400 mb-3";
+
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const img = document.getElementById('ocr-preview-img');
+                        img.src = e.target.result;
+                        img.classList.remove('hidden');
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+        }
+
+        async function runAnalysis() {
+            const box = document.getElementById('output-box');
+            const mode = document.getElementById('mode-select').value;
+
+            if (!uploadedFile) {
+                box.innerHTML = `<span class="text-red-400 font-sans">Please select an image screenshot or JSON file first.</span>`;
+                return;
+            }
+
+            if (mode === 'ocr' && uploadedFile.type.startsWith('image/')) {
+                box.innerHTML = `<span class="text-yellow-400 font-sans flex items-center gap-2"><i class="fa-solid fa-spinner animate-spin"></i> Running Tesseract OCR Browser Engine...</span>`;
+                try {
+                    const result = await Tesseract.recognize(uploadedFile, 'eng');
+                    const rawText = result.data.text.trim();
+                    const sentimentAnalysis = calculateSentiment(rawText);
+
+                    lastOutputData = {
+                        "analysis_type": "REAL_BROWSER_OCR_SCAN",
+                        "engine": "Tesseract.js v5.0",
+                        "filename": uploadedFile.name,
+                        "confidence_score": `${result.data.confidence.toFixed(1)}%`,
+                        "raw_text": rawText,
+                        "nlp_sentiment": sentimentAnalysis,
+                        "timestamp": new Date().toISOString()
+                    };
+
+                    box.className = "flex-1 glass-card bg-gray-950/80 rounded-2xl p-6 font-mono text-xs text-blue-300 min-h-[240px] max-h-[360px] overflow-y-auto border border-gray-800 block text-left";
+                    box.innerText = JSON.stringify(lastOutputData, null, 2);
+                } catch (err) {
+                    box.innerText = "OCR Processing Failed: " + err.message;
+                }
+            } else if (uploadedFile.name.endsWith('.json')) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        const parsed = JSON.parse(e.target.result);
+                        lastOutputData = {
+                            "analysis_type": "ACCOUNT_EXPORT_PARSED",
+                            "filename": uploadedFile.name,
+                            "payload": parsed
+                        };
+                        box.className = "flex-1 glass-card bg-gray-950/80 rounded-2xl p-6 font-mono text-xs text-blue-300 min-h-[240px] max-h-[360px] overflow-y-auto border border-gray-800 block text-left";
+                        box.innerText = JSON.stringify(lastOutputData, null, 2);
+                    } catch(e) {
+                        box.innerText = "Invalid JSON File";
+                    }
+                };
+                reader.readAsText(uploadedFile);
+            } else {
+                box.innerText = "Please select a valid image (for OCR mode) or a .json export file.";
+            }
+        }
+
+        function generateOfficialReport() {
+            const handle = document.getElementById('profile-handle').innerText || "@sih_official";
+            document.getElementById('report-handle').innerText = handle;
+            document.getElementById('report-timestamp').innerText = new Date().toLocaleString();
+            window.print();
+        }
+
+        function copyPayload() {
+            if (lastOutputData) {
+                navigator.clipboard.writeText(JSON.stringify(lastOutputData, null, 2));
+                alert("Payload copied to clipboard!");
+            } else {
+                alert("No payload to copy yet.");
+            }
+        }
+
+        function downloadPayload() {
+            if (lastOutputData) {
+                const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(lastOutputData, null, 2));
+                const downloadAnchor = document.createElement('a');
+                downloadAnchor.setAttribute("href", dataStr);
+                downloadAnchor.setAttribute("download", `katakrypton_scan_${Date.now()}.json`);
+                document.body.appendChild(downloadAnchor);
+                downloadAnchor.click();
+                downloadAnchor.remove();
+            } else {
+                alert("No scanned data available to download.");
+            }
+        }
+
+        function triggerAlert() {
+            if (lastOutputData) {
+                alert("SECURITY ESCALATION: High threat priority payload escalated to SIH Control Center.");
+            } else {
+                alert("No payload generated to escalate.");
+            }
+        }
+
+        window.onload = function() {
+            init3D();
+            initNetworkGraph();
+            renderCrossPlatformMatrix('@sih_official');
+            updatePlatformSearchHint();
+        };
+    </script>
+</body>
+</html>
